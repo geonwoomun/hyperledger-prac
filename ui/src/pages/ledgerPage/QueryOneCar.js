@@ -19,6 +19,7 @@ const useInput = initialValue => {
 }
 
 const useSubmit = (carNumber) => {
+    const [ car, setCar ] = useState('');
     const onSubmit = (e) => {
         e.preventDefault();
         useEffect(() => {
@@ -28,12 +29,12 @@ const useSubmit = (carNumber) => {
             })
         },[])
     }
-    return onSubmit
+    return { onSubmit, car }
 }
 const HomepageLayout = () => {
     // let {  onSubmit } = InputCar();
     const carNum = useInput('');
-    const onSubmit = useSubmit(carNum.value)
+    const { onSubmit, car } = useSubmit(carNum.value)
     return (
         <div>
             <form onSubmit={onSubmit}>
