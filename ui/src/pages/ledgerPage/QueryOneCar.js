@@ -1,34 +1,43 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const useQueryCar = carNumber => {
-    const [ car, setCar ] = useState("");
-    useEffect(() => {
-        axios.get(`/api/queryonecar?carno=${carNumber}`).then(results => {
-            results = results.data;
-            setCar(results);
-        })
-    },[])
-    return car;
+// const InputCar = () => {
+//     const [ carNumber , setCarNum ] = useState('');
+//     const onSubmit = (e) => {
+//        e.preventDefault();
+//        car = useQueryCar(carNumber);
+//     }
+//     return { onChange, onSubmit, car }
+// }
+
+const useInput = initialValue => {
+    const [ value, setValue ] = useState(initialValue);
+    const onChange = e => {
+        setValue(e.target.value);
+    }
+    return { value, onChange }
 }
 
-const InputCar = () => {
-    const [ carNumber , setCarNum ] = useState('');
-    let car = ''
-    const onChange = (e) => {
-        setCarNum(e.target.value);
+const useSubmit = (carNumber) => {
+    const onSubmit = (e) => {
+        e.preventDefault();
+        useEffect(() => {
+            axios.get(`/api/queryonecar?carno=${carNumber}`).then(results => {
+                results = results.data;
+                setCar(results);
+            })
+        },[])
     }
-    const onSubmit = () => {
-       car = useQueryCar(carNumber)
-    }
-    return { onChange, onSubmit, car}
+    return onSubmit
 }
 const HomepageLayout = () => {
-    let { onChange, onSubmit, car } = InputCar();
+    // let {  onSubmit } = InputCar();
+    const carNum = useInput('');
+    const onSubmit = useSubmit(carNum.value)
     return (
         <div>
             <form onSubmit={onSubmit}>
-                <input type="text" onChange={onChange}></input>
+                <input type="text" {...carNum}></input>
                 <button type="submit">제출</button>
             </form>   
             <table style = {{borderCollapse:"collapse"}} border="1">
