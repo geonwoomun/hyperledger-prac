@@ -19,11 +19,12 @@ const ccpPath = path.resolve(
   __dirname,
   "..",
   "..",
+  "..",
   "basic-network",
   "connection.json"
 ); // 바꿔야함
 const ccpJSON = fs.readFileSync(ccpPath, "utf8");
-
+const ccp = JSON.parse(ccpJSON);
 //
 require("./config/passport");
 app.use(cors());
@@ -45,7 +46,7 @@ app.use("/api/pro", Program);
 
 // query all car
 app.get("/api/queryallcars", async (req, res) => {
-  const walletPath = path.join(process.cwd(), "wallet");
+  const walletPath = path.join(process.cwd(),"..", "wallet");
   const wallet = new FileSystemWallet(walletPath);
   console.log(`Wallet path : ${walletPath}`);
 
@@ -67,6 +68,7 @@ app.get("/api/queryallcars", async (req, res) => {
   });
 
   // Get the network (channel) our contract is deployed to.
+  const network = await gateway.getNetwork("mychannel");
   const contract = network.getContract("fabcar");
 
   //Evaluate the specified transaction
