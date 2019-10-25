@@ -12,11 +12,11 @@ const useQueryCar = carNumber => {
     return car;
 }
 
-const inputCar = () => {
+const InputCar = () => {
     const [ carNumber , setCarNum ] = useState('');
     let car = ''
     const onChange = (e) => {
-        setCarNum(e.taget.value);
+        setCarNum(e.target.value);
     }
     const onSubmit = () => {
        car = useQueryCar(carNumber)
@@ -24,7 +24,7 @@ const inputCar = () => {
     return { onChange, onSubmit, car}
 }
 const HomepageLayout = () => {
-    let { onChange, onSubmit, car } = inputCar();
+    let { onChange, onSubmit, car } = InputCar();
     return (
         <div>
             <form onSubmit={onSubmit}>
