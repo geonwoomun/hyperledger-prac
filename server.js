@@ -86,7 +86,7 @@ app.get("/api/queryallcars", async (req, res) => {
 // query car handle
 // localhost:8080/api/querycar?carno=CAR10
 
-app.get("/api/querycar/", async (req, res) => {
+app.get("/api/queryonecar/", async (req, res) => {
   try {
     var carno = req.query.carno;
     console.log(carno);

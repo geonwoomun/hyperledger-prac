@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Home, Signup, Login, Donation, Donation2,Partner,Donacard,Donacoin,
   Donadone,Groupintroduction,Camparegi,Campalist,Buy,Shoppingbasket,Mycampalist,Mydonahistory,
-  Myinfo,Groupintroedit,Buydone,Coincharge,Coincharge2,Coincharge3, CamparegiDone, QueryCar } from './pages';
+  Myinfo,Groupintroedit,Buydone,Coincharge,Coincharge2,Coincharge3, CamparegiDone, QueryCar,
+QueryOneCar } from './pages';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import ResponsiveContainer from '../src/pages/ResponsiveContainer';
 import Footer from './pages/Footer';
@@ -60,6 +61,7 @@ setUserType = () => {  // DB에서 받아 설정한 usertoken으로부터 유저
           <Route path="/buydone" component={Buydone} />
           <Route path="/camparegidone" component={CamparegiDone} />
           <Route path="/queryallcars" component={QueryCar} />
+          <Route path="/queryonecar" component={QueryOneCar}/>
 
         </Switch>
         <Footer/>

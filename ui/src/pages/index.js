@@ -22,3 +22,4 @@ export { default as Coincharge3 } from './Coincharge3';
 export { default as Buydone } from './Buydone';
 export { default as CamparegiDone } from './CamparegiDone';
 export { default as QueryCar } from './ledgerPage/QueryCar';
+export { default as QuerOneyCar } from './ledgerPage/QuerOneyCar';
