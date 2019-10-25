@@ -22,12 +22,10 @@ const useSubmit = (carNumber) => {
     const [ car, setCar ] = useState('');
     const onSubmit = (e) => {
         e.preventDefault();
-        useEffect(() => {
-            axios.get(`/api/queryonecar?carno=${carNumber}`).then(results => {
-                results = results.data;
-                setCar(results);
-            })
-        },[])
+        axios.get(`/api/queryonecar?carno=${carNumber}`).then(results => {
+            results = results.data;
+            setCar(results);
+        })
     }
     return { onSubmit, car }
 }
