@@ -50,7 +50,7 @@ const HomepageLayout = () => {
             <th>owner</th>
           </tr>
         </thead>
-        {car ? (
+        {car === "" ? (
           ""
         ) : (
           <tbody>
