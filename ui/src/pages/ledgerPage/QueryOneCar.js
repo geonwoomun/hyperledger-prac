@@ -55,11 +55,11 @@ const HomepageLayout = () => {
         ) : (
           <tbody>
             <tr>
-              <td>{car.Key}</td>
-              <td>{car.Record.colour}</td>
-              <td>{car.Record.make}</td>
-              <td>{car.Record.model}</td>
-              <td>{car.Record.owner}</td>
+              <td>{carNum.value}</td>
+              <td>{car.colour}</td>
+              <td>{car.make}</td>
+              <td>{car.model}</td>
+              <td>{car.owner}</td>
             </tr>
           </tbody>
         )}
