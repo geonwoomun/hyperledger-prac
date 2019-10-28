@@ -21,7 +21,7 @@ const HomepageLayout = () => {
         <div>
             <form onSubmit={onSubmit}>
                 <label>CarNo</label><input value = {carno} onChange={e=> setCarNo(e.target.value)}/>
-                <label>Owner</label><input value = {owner} onChnage={e=> setOwner(e.target.value)}/>
+                <label>Owner</label><input value = {owner} onChange={e=> setOwner(e.target.value)}/>
                 <button>변경</button>
             </form>
         </div>
