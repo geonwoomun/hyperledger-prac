@@ -24,3 +24,4 @@ export { default as CamparegiDone } from './CamparegiDone';
 export { default as QueryCar } from './ledgerPage/QueryCar';
 export { default as QueryOneCar } from './ledgerPage/QueryOneCar';
 export { default as CreateCar } from './ledgerPage/CreateCar';
+export { default as ChangeOwner } from './ledgerPage/ChangeOwner';
