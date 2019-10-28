@@ -168,7 +168,7 @@ app.post("/api/createcar/", async function(req, res) {
 
     // Create a new file system based wallet for managing identities.
 
-    const walletPath = path.join(process.cwd(), "wallet");
+    const walletPath = path.join(process.cwd(), "..", "wallet");
 
     const wallet = new FileSystemWallet(walletPath);
 
