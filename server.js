@@ -44,6 +44,45 @@ app.use("/api/pro", Program);
 
 // hyperledger
 
+
+app.get("/api/querycamp", async (req, res) => {
+  const walletPath = path.join(process.cwd(),"..", "wallet");
+  const wallet = new FileSystemWallet(walletPath);
+  console.log(`Wallet path : ${walletPath}`);
+
+  const userExists = await wallet.exists("user1");
+
+  if (!userExists) {
+    console.log(
+      'An idendity for the user "user1" does not exist in the wallet'
+    );
+    console.log("Run the registerUser.js application before retrying");
+    return;
+  }
+  // Create a new gateway for connecting to our peer node.
+  const gateway = new Gateway();
+  await gateway.connect(ccp, {
+    wallet,
+    identity: "user1",
+    discovery: { enabled: false }
+  });
+
+  // Get the network (channel) our contract is deployed to.
+  const network = await gateway.getNetwork("mychannel");
+  const contract = network.getContract("example");
+
+  //Evaluate the specified transaction
+  // queryCar transaction - requires 1 argument, ex: ('queryCar', 'CAR4')
+  // queryAllCars transaction - requires no arguments, ex: ('queryAllCars')
+
+  const result = await contract.evaluateTransaction("query");
+  console.log(`Transaction has benn evaluated, result is ${result.toString()}`);
+
+  let obj = JSON.parse(result.toString());
+
+  res.send(obj); // 이 것을 react에서 써먹으면 될듯
+});
+
 // query all car
 app.get("/api/queryallcars", async (req, res) => {
   const walletPath = path.join(process.cwd(),"..", "wallet");
@@ -207,7 +246,6 @@ app.post("/api/createcar/", async function(req, res) {
 
     const contract = network.getContract("fabcar");
     console.dir(contract);
-
     // Submit the specified transaction.
 
     // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
