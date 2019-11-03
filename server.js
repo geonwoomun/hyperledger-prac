@@ -93,6 +93,8 @@ app.post("/api/createcamp/", async function(req, res) {
 
     var orgname = req.body.orgname;
 
+    var target = req.body.target;
+
     // Create a new file system based wallet for managing identities.
 
     const walletPath = path.join(process.cwd(), "..", "wallet");
@@ -138,13 +140,14 @@ app.post("/api/createcamp/", async function(req, res) {
 
     //        await contract.submitTransaction('createCar', 'CAR11', 'Hnda', 'Aord', 'Bla', 'Tom')
 
-    console.log(campno, campname, orgname);
+    console.log(campno, campname, orgname, target);
 
     await contract.submitTransaction(
       "newCampaign",
       campno,
       campname,
       orgname,
+      target
     );
 
     console.log("Transaction has been submitted");
