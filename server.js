@@ -197,14 +197,16 @@ app.post("/api/createcar/", async function(req, res) {
       identity: "user1",
       discovery: { enabled: false }
     });
-
+    console.dir("gateway 확인" + gateway)
     // Get the network (channel) our contract is deployed to.
 
     const network = await gateway.getNetwork("mychannel");
-
+    console.dir("network 확인" + network)
+    console.dir("network 함수 확인" + network.getContract);
     // Get the contract from the network.
 
     const contract = network.getContract("fabcar");
+    console.dir(contract);
 
     // Submit the specified transaction.
 
@@ -288,7 +290,7 @@ app.put('/api/changeowner/', async function (req, res) {
         const gateway = new Gateway();
 
         await gateway.connect(ccp, { wallet, identity: 'user1', discovery: { enabled: false } });
-
+    
  
 
         // Get the network (channel) our contract is deployed to.
@@ -298,7 +300,6 @@ app.put('/api/changeowner/', async function (req, res) {
  
 
         // Get the contract from the network.
-
         const contract = network.getContract('fabcar');
 
  
