@@ -26,3 +26,4 @@ export { default as QueryOneCar } from './ledgerPage/QueryOneCar';
 export { default as CreateCar } from './ledgerPage/CreateCar';
 export { default as ChangeOwner } from './ledgerPage/ChangeOwner';
 export { default as QueryCamp } from './ledgerPage/QueryCamp';
+export { default as CreateCamp } from './ledgerPage/CreateCamp';

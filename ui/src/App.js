@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Home, Signup, Login, Donation, Donation2,Partner,Donacard,Donacoin,
   Donadone,Groupintroduction,Camparegi,Campalist,Buy,Shoppingbasket,Mycampalist,Mydonahistory,
   Myinfo,Groupintroedit,Buydone,Coincharge,Coincharge2,Coincharge3, CamparegiDone, QueryCar,
-QueryOneCar, CreateCar, ChangeOwner, QueryCamp} from './pages';
+QueryOneCar, CreateCar, ChangeOwner, QueryCamp, CreateCamp} from './pages';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import ResponsiveContainer from '../src/pages/ResponsiveContainer';
 import Footer from './pages/Footer';
@@ -65,6 +65,7 @@ setUserType = () => {  // DB에서 받아 설정한 usertoken으로부터 유저
           <Route path="/createcar" component={CreateCar}/>
           <Route path="/changeowner" component={ChangeOwner}/>
           <Route path="/querycamp" component={QueryCamp}/>
+          <Route path="/createcamp" component={CreateCamp}/>
 
         </Switch>
         <Footer/>
