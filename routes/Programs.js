@@ -54,7 +54,7 @@ Programs.post('/register', async (req, res) => {  // 프로그램 등록
     prolist.create(
         program
     )
-    .then(results => {
+    .then(async (results) => {
     const proNum = results.proNum
 
     const walletPath = path.join(process.cwd(), "..","..", "wallet");
