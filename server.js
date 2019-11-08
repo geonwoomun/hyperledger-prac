@@ -45,7 +45,7 @@ app.use("/api/pro", Program);
 // hyperledger
 
 
-app.post("/api/createcamp/", async function(req, res) { // 돈기부.
+app.post("/api/donacoin/", async function(req, res) { // 돈기부.
   try {
     var campno = req.body.campno;
 
