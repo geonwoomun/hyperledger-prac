@@ -121,8 +121,6 @@ Programs.post('/register', async (req, res) => {  // 프로그램 등록
     res.send(
         "success"
     ); // 성공하면 react에서 페이지 전환.
-
-        res.send(results);
     })
     .catch(err => {
         console.error(err);
