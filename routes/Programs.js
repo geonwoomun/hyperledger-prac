@@ -116,7 +116,7 @@ Programs.post('/register', async (req, res) => {  // 프로그램 등록
 
     await gateway.disconnect();
 
-    res.status(200).json({response: 'Transaction has been submitted'})
+    // res.status(200).json({response: 'Transaction has been submitted'})
 
     res.send(
         "success"
