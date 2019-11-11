@@ -219,8 +219,8 @@ users.post('/findpassword', (req, res) => { // 해당 주소로 들어왔을때�
          secure: false,
           service: 'gmail',
           auth: {
-            user: 'ansrjsdn9865@gmail.com', // 바꾸자
-            pass: 'gkskenftpt123!', // 바꾸자
+            user: 'youremail', // 바꾸자
+            pass: 'youremailpassword', // 바꾸자
           },
           tls: {
             rejectUnauthorized: false
@@ -277,10 +277,10 @@ users.post("/findid", (req, res) => {
       
       const transporter = nodemailer.createTransport({
         secure: false,
-        service: 'gmail',
+        service: 'gmail', // gmail 만 됨
         auth: {
-          user: 'ansrjsdn9865@gmail.com', // 바꾸자
-          pass: 'gkskenftpt123!', // 바꾸자
+          user: 'youremail', // 바꾸자
+          pass: 'youremail pass!', // 바꾸자
         },
         tls: {
           rejectUnauthorized: false
