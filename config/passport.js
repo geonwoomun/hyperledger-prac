@@ -11,8 +11,8 @@ const LocalStrategy = require('passport-local').Strategy;
 // const ExtractJWT = require('passport-jwt').ExtractJwt;
 const User = require('../models/User');
 
-
-passport.use(
+// 로그인, 회원가입 관련 설정
+passport.use( // 회원가입할 때
     'signup',
     new LocalStrategy(
         {
@@ -48,7 +48,7 @@ passport.use(
 );
 
 
-passport.use(
+passport.use( // 로그인 할 때
     'login',
     new LocalStrategy(
         {

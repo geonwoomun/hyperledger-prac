@@ -29,13 +29,18 @@ class HomepageLayout extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { proNum } = this.props.match.params
-    const { coin } = this.state;
-    donateCoin(proNum, coin).then(res => {
-      if(res){
-        this.props.history.push(`/donadone/${proNum}/${coin}`)
-      }
-    })
-
+    const { nowCoin, coin } = this.state;
+    if(nowCoin > 0 && nowCoin >= coin) {
+      const email = getEmail();
+      donateCoin(proNum, coin, email).then(res => {
+        if(res){
+          this.props.history.push(`/donadone/${proNum}/${coin}`)
+        }
+      })
+    }
+    else {
+      alert('코인이 부족합니다. 충전해주세요');
+    }
   }
   render() {
     const {nowCoin} = this.state;

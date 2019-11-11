@@ -189,3 +189,14 @@ export const donateCoin = async (proNum, coin) => { // 코인 후원 할 때 사
     console.error(err);
   })
 }
+
+export const getDonaList = async (proNum) => {
+  return await axios
+  .get(`/api/pro/getdonalist/${proNum}`)
+  .then(res => {
+    return res.data;
+  })
+  .catch(err => {
+    console.log(err);
+  })
+}

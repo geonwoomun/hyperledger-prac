@@ -7,7 +7,8 @@ export default class MenuExampleSecondaryPointing extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-    const { activeItem } = this.state
+    const { activeItem } = this.state;
+    const { donalist } = this.props;
 
     return (
       <div>
@@ -25,6 +26,14 @@ export default class MenuExampleSecondaryPointing extends Component {
           />
       
         </Menu>
+        {activeItem === '스토리' ?  <div>
+            {donalist.map(dona => {
+              const date = dona.date.slice(0,10);
+              return (
+                <p>{date+" " + dona.email+'님이 '+ dona.donaCoin+ '코인을 후원하셨습니다'}</p>
+              )
+            })}
+          </div>: ""}
 
         
       </div>

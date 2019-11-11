@@ -1,7 +1,7 @@
 const multer = require('multer');
 const moment = require('moment');
 
-const storage = multer.diskStorage({
+const storage = multer.diskStorage({ // 사진 업로드 할 때 사용.
     detination : function(req, file, cb){
         cb(null, 'uploads');
     },

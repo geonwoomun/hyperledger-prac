@@ -21,7 +21,7 @@ const ccpPath = path.resolve(
 const ccpJSON = fs.readFileSync(ccpPath, "utf8");
 const ccp = JSON.parse(ccpJSON);
 
-Programs.post('/uploadImg', (req, res) =>{
+Programs.post('/uploadImg', (req, res) =>{ 
     if(req.files === null){
         return res.status(400).json({msg: 'No files upload'})
     }

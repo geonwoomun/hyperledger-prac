@@ -1,5 +1,5 @@
 //15.나의 정보 
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -7,8 +7,20 @@ import {
   Segment,
 } from 'semantic-ui-react'
 import SideContent from './SideContent';
+import axios from 'axios';
+import { getEmail } from './pageFunction';
 
-const HomepageLayout = () => (
+const HomepageLayout = () => {
+  const [ nowCoin, setNowCoin ] = useState(0);
+  const [ donaCoin, setDonaCoin ] = useState(0);
+  const email = getEmail();
+  useEffect(() => {
+    axios.get(`/api/coin/getCoinAll/${email}`).then((result) => {
+      setDonaCoin(result.data.allCoin);
+      setNowCoin(result.data.coin);
+    })
+  }, [])
+   return (
     <Segment style={{ padding: '0em 15.6em 50em', display: 'flex' }} vertical >
         <SideContent part ="mypage" info = {false}/>
      <div style= {{marginTop : "50px"}}>
@@ -24,7 +36,7 @@ const HomepageLayout = () => (
        <div class="ui medium image" style ={{display:'flex', justifyContent: 'center'}}>
          <div style={{width:"168px",height:"168px", background:'#219451'}} class="ui circular inverted segment">
            <h1 class="ui inverted header" style ={{marginTop:'35px'}}>
-         500 코인
+         {nowCoin} 코인
           </h1>
          </div>
      </div>
@@ -44,7 +56,7 @@ const HomepageLayout = () => (
   <div class="ui medium image" style ={{display:'flex', justifyContent: 'center'}}>
          <div style={{width:"168px",height:"168px",color: '#FFFFFF', background:' #219451'}} class="ui circular inverted segment">
            <h1 class="ui inverted header" style={{marginTop:'35px'}}>
-         850 코인
+         {donaCoin} 코인
           <div class="sub header"></div>
           </h1>
          </div>
@@ -56,6 +68,8 @@ const HomepageLayout = () => (
 </table>
       </div>
     </Segment>
-   
-)
+  )
+}
+    
+  
 export default HomepageLayout

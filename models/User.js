@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
 const db = require('../database/db');
 const prolist = require('./prolist');
+const userDonaList = require('./userDonaList');
 const User = db.sequelize.define(
-    'user',
+    'user',  // 유저 테이블
     {
         email : {
             type : Sequelize.STRING,
@@ -20,9 +21,13 @@ const User = db.sequelize.define(
         birth : {
             type : Sequelize.DATE,
         },
-        coin : {
+        coin : { // 현재코인
             type : Sequelize.INTEGER,
             defaultValue : 0
+        },
+        allCoin : { // 총 후원 코인
+            type: Sequelize.INTEGER,
+            defaultValue: 0
         },
         userType : {
             type : Sequelize.INTEGER,
@@ -38,5 +43,5 @@ const User = db.sequelize.define(
 )
 
 User.hasMany(prolist, { foreignKey: 'userEmail', sourceKey: 'email' })
-
+User.hasMany(userDonaList, { foreignKey:'email', sourceKey: 'email'});
 module.exports = User;
